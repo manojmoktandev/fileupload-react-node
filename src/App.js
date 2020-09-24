@@ -28,7 +28,7 @@ function App() {
     for(var x = 0; x<formData.selectedFile.length; x++) {
        data.append('file', formData.selectedFile[x])
     }
-    axios.post("http://localhost:8000/upload", data, { 
+    axios.post("http://localhost:4000/upload", data, { 
         onUploadProgress: ProgressEvent => {
             setFormData({
               loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
@@ -81,7 +81,7 @@ function App() {
 
   const checkFileSize=(event)=>{
     let files = event.target.files;
-    let size = 15000;
+    let size = 512000;
     let err = ""; 
     for(let x = 0; x<files.length; x++) {
      if (files[x].size > size) {
